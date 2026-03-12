@@ -4,10 +4,12 @@
 int main() {
 	double x = 0;
 	short bit = 0;
+	int iserror;
 
 	printf("Plz enter real number: "); //실수 입력
+	iserror=scanf("%lf",&x);
 
-	if (scanf("%lf", &x) != 1) {
+	if (iserror != 1) {
 		printf("error!"); //실수를 정상적으로 입력 받지 못했을 경우 에러문구 띄우고 시스템 종료
 		return 1;
 	}
