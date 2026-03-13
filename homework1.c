@@ -9,9 +9,6 @@ int main() {
 	else if (~x + 1 == -x) {
 		printf("This system is two's complement."); //NOT연산자를 사용하였을때 ~x의 값에 1을 더한값고 -x의 값이 같아진다면 2의 보수
 	}
-	else {
-		printf("Unknown number representation."); //그 외의 결과가 나왔을땐 1의 보수와 2의 보수 둘 다 아닌 알 수 없는 방식
-	}
 
 	return 0;
 }
