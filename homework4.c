@@ -4,7 +4,7 @@ int main() {
 	char str[100];
 
 	printf("String input: ");
-	fgets(str, sizeof(str), stdin);//입력
+	fgets(str, sizeof(str), stdin);//띄어쓰기를 받기 위해서 fgets사용
 
 	int i = 0;
 
