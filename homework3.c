@@ -43,13 +43,13 @@ int main() {
 		}
 	}
 
-	printf("%d.", sign); //부호에 따른 0 or 1 출력
+	printf("%d/", sign); //부호에 따른 0 or 1 출력
 
 	for (int i = 7; i >= 0; i--)//지수부분출력
 	{
 		printf("%d", (bias >> i) & 1);
 	}
-	printf(".");
+	printf("/");
 
 	for (int j = 0; j < 23; j++) //가수부분 출력
 	{
