@@ -131,7 +131,8 @@ GCD의 시간복잡도 **O(log n)** 이 실험적으로 검증된다.
 
 <img width="1115" height="617" alt="image" src="https://github.com/user-attachments/assets/5c578e8a-a4a1-4f62-b968-1ead38c748cf" />
 
-<img width="1440" height="1408" alt="image" src="https://github.com/user-attachments/assets/84b5cf74-5b90-4930-a760-a6c0da8a088e" />
+<img width="1079" height="563" alt="image" src="https://github.com/user-attachments/assets/f40509d9-1aaf-4086-81c0-ab1afbc582c3" />
+
 
 
 ### GCD 실행 시간
@@ -139,6 +140,7 @@ GCD의 시간복잡도 **O(log n)** 이 실험적으로 검증된다.
 > 피보나치 값이 수억 단위로 커져도 GCD 실행 시간은 0ms 수준을 유지한다.  
 > 이는 O(log n)의 특성을 실험적으로 보여준다.
 
+<img width="1106" height="361" alt="image" src="https://github.com/user-attachments/assets/e1ee7f6f-f8f7-44a4-833e-27a3357d695c" />
 
 ---
 
