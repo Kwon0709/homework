@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include<stdlib.h>
-#define N 7//Size는 홀수
+#define N 7//N 홀수
 
 int main() {
     int Array[N][N] = { 0 };
