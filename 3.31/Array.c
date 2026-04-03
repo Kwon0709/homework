@@ -1,48 +1,41 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
 #define N 20
 
 int main() {
-	int Array[N];
+    int arr[N];
 
-	srand(time(NULL)); //매번 다른 랜덤값 호출
+    srand(time(NULL)); //매번 다른 랜덤값 호출
 
-	printf("=======================================\n");
-	for (int i = 0; i < N;i++) {
-		Array[i] = rand() % (N + 1);
+    printf("정방향 출력:\n");
+    for (int i = 0; i < N; i++) {
+        arr[i] = rand() % (N + 1);
+        printf("%d ", arr[i]);
+    }
+    printf("\n\n");
 
-		printf("{%d}\t", Array[i]);
-		if ((i + 1) % 5 == 0) printf("\n");
-	}
+    printf("역방향 출력:\n");
+    for (int i = N - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n\n");
 
-	printf("\n");
+    int sum = 0;
+    int max = arr[0];
+    int min = arr[0];
 
-	printf("=======================================\n");
+    for (int i = 0; i < N; i++) {
+        sum += arr[i];
 
-	for (int j = N - 1; j >= 0; j--) {
-		printf("{%d}\t", Array[j]);
-		if ((N - j) % 5 == 0) printf("\n");
-	}
+        if (arr[i] > max) max = arr[i];
+        if (arr[i] < min) min = arr[i];
+    }
 
-	printf("\n");
+    printf("합: %d\n", sum);
+    printf("최대값: %d\n", max);
+    printf("최소값: %d\n", min);
 
-	int Sum = 0;
-	int Max = Array[0];
-	int Min = Array[0];
-
-	for (int i = 0; i < N; i++) {
-		Sum += Array[i];
-
-		if (Max < Array[i]) { Max = Array[i]; }
-		if (Min > Array[i]) { Min = Array[i]; }
-	}
-
-	printf("-------------------------------------\n");
-
-	printf("Sum:%d || MAX:%d || MIN:%d\n", Sum, Max, Min);
-
-	printf("-------------------------------------");
-
-	return 0;
+    return 0;
 }
