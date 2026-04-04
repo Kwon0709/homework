@@ -12,7 +12,11 @@ int main() {
 	}
 
 	int* arr = (int*)calloc(N*N,sizeof(int));
-
+	 if (arr == NULL) {
+        printf("메모리 할당 실패\n");
+        return 1;
+    }
+	
 	int row = 0;
 	int col = N / 2;
 
