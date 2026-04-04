@@ -26,7 +26,7 @@ int main() {
     printf("\n[ %d x %d 마방진 ]\n", N, N);
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            printf("%4d", Array[i][j]);
+            printf("%5d", Array[i][j]);
         }
         printf("\n");
     }
