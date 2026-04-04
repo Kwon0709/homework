@@ -5,7 +5,7 @@
 int main() {
 	int N = 0;
 
-	printf("Number: ");
+	printf("숫자 입력: ");
 	scanf_s("%d", &N);
 
 	int* arr = (int*)malloc(sizeof(int)*N);
