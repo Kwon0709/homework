@@ -8,9 +8,19 @@ int main() {
 	printf("숫자 입력: ");
 	scanf_s("%d", &N);
 
+	 if (N <= 0) {
+        printf("양수만 입력하세요.\n");
+        return 1;
+    }
+
+
 	int* arr = (int*)malloc(sizeof(int)*N);
 
-
+	if (arr == NULL) {
+        printf("메모리 할당 실패\n");
+        return 1;
+    }
+	
 	srand(time(NULL));
 
 	int* ptr = arr;
