@@ -1,78 +1,93 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main() {
-	int N = 0;
-	printf("홀수 입력: ");
-	scanf_s("%d", &N);
+    int N;
+    printf("홀수 N 입력: ");
+    scanf("%d", &N);
 
-	if (N % 2 == 0 || N <= 0) {
-		printf("홀수만 입력하세요.\n");
-		return 1;
-	}
-
-	int* arr = (int*)calloc(N*N,sizeof(int));
-	 if (arr == NULL) {
-        printf("메모리 할당 실패\n");
-        return 1;
+    // 홀수 체크
+    if (N % 2 == 0) {
+        printf("홀수만 가능합니다.\n");
+        return 0;
     }
-	
-	int row = 0;
-	int col = N / 2;
 
-	for (int i = 1;i <= N * N;i++) {
-		*(arr+row*N+col)=i;
+    // 2차원 배열 동적 할당
+    int** arr = (int**)malloc(sizeof(int*) * N);
+    for (int i = 0; i < N; i++) {
+        arr[i] = (int*)malloc(sizeof(int) * N);
+    }
 
-		int next_row = (row - 1 + N) % N;
-		int next_col = (col + 1) % N;
+    // 배열 초기화
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            arr[i][j] = 0;
 
-		if (*(arr+next_row*N+next_col) != 0) {
-			next_row = (row + 1) % N;
-			next_col = col;
-		}
+    // 마방진 생성 
+    int num = 1;
+    int row = 0;
+    int col = N / 2;
 
-		row = next_row;
-		col = next_col;
-	}
+    while (num <= N * N) {
+        arr[row][col] = num;
 
-	printf("\n[ %d x %d 마방진 ]\n", N, N);
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
-			printf("%5d", *(arr+i*N+j));
-		}
-		printf("\n");
-	}
+        int next_row = (row - 1 + N) % N;
+        int next_col = (col + 1) % N;
 
-	int Magic_sum = N * (N * N + 1) / 2;
-	printf("기준 합:%d\n",Magic_sum);
-	printf("ㅡㅡ검증ㅡㅡ\n");
+        if (arr[next_row][next_col] != 0) {
+            row = (row + 1) % N;
+        } else {
+            row = next_row;
+            col = next_col;
+        }
 
-	for (int i = 0;i < N;i++) {
-		int row_sum = 0;
-		for (int j = 0;j < N;j++) row_sum += *(arr + i * N + j);
-			printf("가로 %d행 합:%d\n",i+1,row_sum);
-	}
+        num++;
+    }
 
-	printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+    // 배열 출력
+    printf("\n[마방진]\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%4d", arr[i][j]);
+        }
+        printf("\n");
+    }
 
-	for (int j = 0;j < N;j++) {
-		int col_sum = 0;
-		for (int i = 0;i < N;i++) col_sum += *(arr + i * N + j);
-		printf("세로 %d행 합 :%d\n", j + 1, col_sum);
-	}
+    printf("\n[합 검증]\n");
 
-	printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+    // 가로 합
+    for (int i = 0; i < N; i++) {
+        int sum = 0;
+        for (int j = 0; j < N; j++) {
+            sum += arr[i][j];
+        }
+        printf("가로 %d 합: %d\n", i + 1, sum);
+    }
 
-	int diag1 = 0, diag2 = 0;
-	for (int i = 0;i < N;i++) {
-		diag1 += *(arr + i * N + i); //왼->오
-		diag2 += *(arr + i * N + (N-1) - i);//오->왼
-	}
+    // 세로 합
+    for (int j = 0; j < N; j++) {
+        int sum = 0;
+        for (int i = 0; i < N; i++) {
+            sum += arr[i][j];
+        }
+        printf("세로 %d 합: %d\n", j + 1, sum);
+    }
 
-	printf("왼->오:%d\n", diag1);
-	printf("오->왼:%d\n", diag2);
+    // 대각선 합
+    int diag1 = 0, diag2 = 0;
+    for (int i = 0; i < N; i++) {
+        diag1 += arr[i][i];
+        diag2 += arr[i][N - 1 - i];
+    }
 
-	free(arr);
+    printf("대각선 1 합: %d\n", diag1);
+    printf("대각선 2 합: %d\n", diag2);
 
-	return 0;
+    // 메모리 해제
+    for (int i = 0; i < N; i++) {
+        free(arr[i]);
+    }
+    free(arr);
+
+    return 0;
 }
