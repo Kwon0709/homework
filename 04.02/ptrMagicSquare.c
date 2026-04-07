@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -36,7 +37,8 @@ int main() {
 
         if (arr[next_row][next_col] != 0) {
             row = (row + 1) % N;
-        } else {
+        }
+        else {
             row = next_row;
             col = next_col;
         }
