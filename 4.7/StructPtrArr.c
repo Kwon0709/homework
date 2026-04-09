@@ -36,7 +36,7 @@ int main() {
 
 
 
-	fp = fopen("C:\\Users\\kwon\\Downloads\\name_list.txt", "r");
+	fp = fopen("C:\\Users\\ppiqq\\Desktop\\Name_list.txt", "r");
 	if (fp == NULL) {
 
 		printf("Fail to open\n");
