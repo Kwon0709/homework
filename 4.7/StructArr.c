@@ -50,7 +50,12 @@ int main() {
 
 	for (int i = 0; i < N;i++) {
 
-		fgets(arr[i].name, sizeof(arr[i].name), fp);
+		if (fgets(arr[i].name, sizeof(arr[i].name), fp) == NULL) {
+		printf("이름 개수 부족\n");
+		free(arr);
+		fclose(fp);
+		return 1;
+		}
 		arr[i].name[strcspn(arr[i].name, "\r\n")] = '\0';
 
 		arr[i].studentNum = i + 1;
