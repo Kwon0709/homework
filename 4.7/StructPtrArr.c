@@ -50,26 +50,30 @@ int main() {
 
 	for (int i = 0; i < N;i++) {
 
-		fgets((*(arr+i)).name, sizeof((*(arr + i)).name), fp);
-		(*(arr + i)).name[strcspn((*(arr + i)).name, "\r\n")] = '\0';
-
-		(*(arr + i)).studentNum = i + 1;
-		(*(arr + i)).score = (rand() % 100) + 1;
-
-		if ((*(arr + i)).score > (*(arr + best)).score) best = i;
-		if ((*(arr + i)).score < (*(arr + worst)).score) worst = i;
-
-		aver += (*(arr + i)).score;
-
-		printf("%s %d %d\n", (*(arr + i)).name, (*(arr + i)).studentNum, (*(arr + i)).score);
+	if (fgets((*(arr + i)).name, sizeof((*(arr + i)).name), fp) == NULL) {
+		printf("이름 개수 부족\n");
+		free(arr);
+		fclose(fp);
+		return 1;
 	}
+	(*(arr + i)).name[strcspn((*(arr + i)).name, "\r\n")] = '\0';
 
-	printf("--------------------------------------------------------\n");
+	(*(arr + i)).studentNum = i + 1;
+	(*(arr + i)).score = (rand() % 100) + 1;
 
-	printf("최고점의 학생 정보:(이름:%s,학번:%d,성적:%d)\n", (*(arr + best)).name, (*(arr + best)).studentNum, (*(arr + best)).score);
-	printf("\n최저점의 학생 정보:(이름:%s,학번:%d,성적:%d)\n", (*(arr + worst)).name, (*(arr + worst)).studentNum, (*(arr + worst)).score);
+	if ((*(arr + i)).score > (*(arr + best)).score) best = i;
+	if ((*(arr + i)).score < (*(arr + worst)).score) worst = i;
 
-	printf("\n평균 점수:%.1f\n", (double)aver / N);
+	aver += (*(arr + i)).score;
+}
+
+printf("--------------------------------------------------------\n");
+
+printf("최고점의 학생 정보:(이름:%s,학번:%d,성적:%d)\n", (*(arr + best)).name, (*(arr + best)).studentNum, (*(arr + best)).score);
+printf("\n최저점의 학생 정보:(이름:%s,학번:%d,성적:%d)\n", (*(arr + worst)).name, (*(arr + worst)).studentNum, (*(arr + worst)).score);
+
+printf("\n평균 점수:%.1f\n", (double)aver / N);
+
 
 	fclose(fp);
 
