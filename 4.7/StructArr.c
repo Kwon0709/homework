@@ -59,8 +59,6 @@ int main() {
 		if (arr[i].score > arr[best].score) best = i;
 		if (arr[i].score < arr[worst].score) worst = i;
 
-		printf("%s %d %d\n", arr[i].name, arr[i].studentNum, arr[i].score);
-
 		aver += arr[i].score;
 	}
 
