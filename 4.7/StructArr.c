@@ -43,9 +43,7 @@ int main() {
 
 		return 0;
 	}
-
-	int best = 0;
-	int worst = 0;
+	
 	int aver = 0;
 
 	for (int i = 0; i < N;i++) {
@@ -60,12 +58,14 @@ int main() {
 
 		arr[i].studentNum = i + 1;
 		arr[i].score = (rand() % 100) + 1;
-
-		if (arr[i].score > arr[best].score) best = i;
-		if (arr[i].score < arr[worst].score) worst = i;
-
 		aver += arr[i].score;
 	}
+
+	int best = 0, worst = 0;
+for (int i = 1; i < N; i++) {
+    if (arr[i].score > arr[best].score) best = i;
+    if (arr[i].score < arr[worst].score) worst = i;
+}
 
 	printf("--------------------------------------------------------\n");
 
