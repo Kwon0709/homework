@@ -1,34 +1,25 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include<time.h>
 
 long long fibo(int n) {
-	if (n <= 0) return 0;
-
-	if (n == 1) return 1;
-
-	long long result;
-	long long temp1 = 1;
-	long long temp2 = 0;
-
-	for (int i = 2; i <= n;i++) {
-		result = temp1 + temp2;
-		temp2 = temp1;
-		temp1 = result;
-	}
-
-	return result;
+    if (n <= 0) return 0;
+    if (n == 1) return 1;
+    long long result, temp1 = 1, temp2 = 0;
+    for (int i = 2; i <= n; i++) {
+        result = temp1 + temp2;
+        temp2 = temp1;
+        temp1 = result;
+    }
+    return result;
 }
 
 int main() {
-	int N = 0;
-
-	printf("숫자를 입력하세요: ");
-	scanf_s("%d", &N);
-
-	long long fn = 0;
-		fn=fibo(N);
-
-	printf("%lld", fn);
-
-	return 0;
+    for (int n = 1; n <= 50; n++) {
+        clock_t start = clock();
+        long long fn = fibo(n);
+        clock_t end = clock();
+        double elapsed = (double)(end - start) / CLOCKS_PER_SEC;
+        printf("F(%d) = %lld, 시간: %.6f초\n", n, fn, elapsed);
+    }
+    return 0;
 }
