@@ -34,7 +34,7 @@ int main() {
 		scanf_s("%d", &choice);
 
 		if (choice == 1) {
-			printf("위치,값 입력:");
+			printf("위치,값 입력(위치는 0부터 시작):");
 			scanf_s("%d %d", &pos, &item);
 			if (insertItemArrayList(myArrayList, pos, item))
 			{printf("삽입 성공 (현재 capacity: %d)\n", myArrayList->capacity);
