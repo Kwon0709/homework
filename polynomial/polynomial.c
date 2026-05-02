@@ -64,22 +64,21 @@ polynomial* addPolynomial(polynomial* p1, polynomial* p2) {
 }
 
 polynomial* multPolynomial(polynomial* p1, polynomial* p2) {
-	polynomial* r = createPolynomial(100);
+    polynomial* r = createPolynomial(100);
 
-	for (int i = 0; i < sizeArrayList(p1); i++) {
+    for (int i = 0; i < sizeArrayList(p1); i++) {
+        for (int j = 0; j < sizeArrayList(p2); j++) {
+            int coef = p1->data[i].coef * p2->data[j].coef;
+            int expo = p1->data[i].expo + p2->data[j].expo;
 
-		for (int j = 0; j < sizeArrayList(p2); j++) {
+            if (coef != 0) {
+                // 중복된 항목은 자동으로 합쳐짐
+                addItemPolynomial(r, (elementType) { coef, expo });
+            }
+        }
+    }
 
-			int coef = p1->data[i].coef * p2->data[j].coef;
-			int expo = p1->data[i].expo + p2->data[j].expo;
-
-			if (coef != 0) {
-				addItemPolynomial(r, (elementType) { coef, expo });
-			}
-		}
-	}
-
-	return r;
+    return r;
 }
 
 void printPolynomial(polynomial* po) {
