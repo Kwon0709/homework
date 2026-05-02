@@ -55,7 +55,7 @@ polynomial* addPolynomial(polynomial* p1, polynomial* p2) {
 		addItemPolynomial(r, p1->data[i]);
 		i++;
 	}
-	while (j > sizeArrayList(p2)) {
+	while (j < sizeArrayList(p2)) {
 		addItemPolynomial(r, p2->data[j]);
 		j++;
 	}
