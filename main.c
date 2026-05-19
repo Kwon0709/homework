@@ -6,11 +6,17 @@
 int main() {
     LinkedStack* myStack = createLinkedStack();
 
-    pushLinkedStack(myStack, 10);
-    pushLinkedStack(myStack, 20);
-    pushLinkedStack(myStack, 30);
+    pushLinkedStack(myStack, "www.google.com");
+    pushLinkedStack(myStack, "www.naver.com");
+    pushLinkedStack(myStack, "dkmd");
 
     printLinkedStack(myStack);
+
+    popLinkedStack(myStack);
+
+    printLinkedStack(myStack);
+
+    printf("peek:%d", peekStack(myStack));
 
     return 0;
 }
